@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <title>Kenya College - Excellence in Education</title>
+    <meta name="description" content="Join Kenya's leading college offering world-class education in science, technology, business, and the arts. Discover programs designed for your success." />
+    <meta property="og:title" content="Kenya College - Excellence in Education" />
+    <meta property="og:description" content="Transform your future with quality education at Kenya College. Explore our diverse programs and vibrant campus community." />
+    <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <df-messenger
+      intent="WELCOME"
+      chat-title="SchoolChartBot"
+      agent-id="9d27fbe9-9dda-4b58-aff4-c53825858d66"
+      language-code="en"
+    ></df-messenger>
+    <style>
+      df-messenger {
+        --df-messenger-bot-message: hsl(210 70% 45%);
+        --df-messenger-button-titlebar-color: hsl(210 70% 45%);
+        --df-messenger-chat-background-color: hsl(210 5% 98%);
+        --df-messenger-font-color: hsl(220 50% 20%);
+        --df-messenger-send-icon: hsl(210 70% 45%);
+        --df-messenger-user-message: hsl(25 85% 55%);
+      }
+    </style>
+  </body>
+</html>

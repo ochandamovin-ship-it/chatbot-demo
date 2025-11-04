@@ -1,4 +1,5 @@
 import express, { type Request, Response, NextFunction } from "express";
+import type { ListenOptions } from "net";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
 
@@ -56,16 +57,23 @@ app.use((req, res, next) => {
     serveStatic(app);
   }
 
-  // ALWAYS serve the app on the port specified in the environment variable PORT
-  // Other ports are firewalled. Default to 5000 if not specified.
+  // ALWAYS serve the app on the port specified in the environment variable PORT.
+  // Default to 3002 for development and 5000 otherwise so the app can run locally
+  // without colliding with Windows firewall rules for production builds.
   // this serves both the API and the client.
   // It is the only port that is not firewalled.
-  const port = parseInt(process.env.PORT || '5000', 10);
-  server.listen({
+  const defaultPort = app.get("env") === "development" ? "3002" : "5000";
+  const port = parseInt(process.env.PORT || defaultPort, 10);
+  const listenOptions: ListenOptions = {
     port,
     host: "0.0.0.0",
-    reusePort: true,
-  }, () => {
+  };
+
+  if (process.platform === "linux") {
+    listenOptions.reusePort = true;
+  }
+
+  server.listen(listenOptions, () => {
     log(`serving on port ${port}`);
   });
 })();

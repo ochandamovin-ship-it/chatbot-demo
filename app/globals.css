@@ -264,6 +264,16 @@
  */
 @layer utilities {
 
+  /* Dialogflow Chatbot Styling */
+  df-messenger {
+    --df-messenger-bot-message: hsl(210 70% 45%);
+    --df-messenger-button-titlebar-color: hsl(210 70% 45%);
+    --df-messenger-chat-background-color: hsl(210 5% 98%);
+    --df-messenger-font-color: hsl(220 50% 20%);
+    --df-messenger-send-icon: hsl(210 70% 45%);
+    --df-messenger-user-message: hsl(25 85% 55%);
+  }
+
   /* Hide ugly search cancel button in Chrome until we can style it properly */
   input[type="search"]::-webkit-search-cancel-button {
     @apply hidden;

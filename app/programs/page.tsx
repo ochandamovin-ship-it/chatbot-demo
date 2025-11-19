@@ -1,10 +1,9 @@
+"use client";
+
 import { useState } from "react";
 import ProgramCard from "@/components/ProgramCard";
 import { Button } from "@/components/ui/button";
 import { FlaskConical, Laptop, Building2, Heart, BookOpen, Microscope, Palette, Calculator } from "lucide-react";
-import scienceImage from "@assets/generated_images/Science_laboratory_classroom_scene_cf181a8f.png";
-import libraryImage from "@assets/generated_images/Library_study_environment_4fb96a10.png";
-import businessImage from "@assets/generated_images/Business_technology_classroom_collaboration_8be99353.png";
 
 const allPrograms = [
   {
@@ -14,7 +13,7 @@ const allPrograms = [
         title: "Computer Science",
         description: "Master programming, AI, and software development with cutting-edge technology and expert faculty.",
         icon: Laptop,
-        image: scienceImage,
+        image: "/Science_laboratory_classroom_scene_cf181a8f.png",
       },
       {
         title: "Information Technology",
@@ -35,7 +34,7 @@ const allPrograms = [
         title: "Business Administration",
         description: "Learn leadership, strategy, and entrepreneurship to build your career in the business world.",
         icon: Building2,
-        image: businessImage,
+        image: "/Business_technology_classroom_collaboration_8be99353.png",
       },
       {
         title: "Marketing",
@@ -56,7 +55,7 @@ const allPrograms = [
         title: "Health Sciences",
         description: "Prepare for a rewarding career in healthcare with our comprehensive medical programs.",
         icon: Heart,
-        image: libraryImage,
+        image: "/Library_study_environment_4fb96a10.png",
       },
       {
         title: "Nursing",
@@ -134,10 +133,10 @@ const allPrograms = [
 
 export default function Programs() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
-  
+
   const categories = ["All", ...allPrograms.map(cat => cat.category)];
-  
-  const filteredPrograms = selectedCategory === "All" 
+
+  const filteredPrograms = selectedCategory === "All"
     ? allPrograms.flatMap(cat => cat.items)
     : allPrograms.find(cat => cat.category === selectedCategory)?.items || [];
 
@@ -148,7 +147,7 @@ export default function Programs() {
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl lg:text-6xl font-bold mb-6">Our Programs</h1>
             <p className="text-lg text-muted-foreground">
-              Discover over 100 programs designed to help you achieve your academic and professional goals. 
+              Discover over 100 programs designed to help you achieve your academic and professional goals.
               From undergraduate to graduate studies, we offer world-class education in diverse fields.
             </p>
           </div>

@@ -29,7 +29,7 @@ export default function Contact() {
 
             <div className="space-y-6">
               <h2 className="text-3xl font-bold mb-6">Get in Touch</h2>
-              
+
               <Card>
                 <CardHeader className="gap-2">
                   <MapPin className="w-6 h-6 text-primary" />

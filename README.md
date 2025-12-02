@@ -1,148 +1,234 @@
-# CollegeKenya
+# Kenya College Website
 
-A small web application built with Vite, React (TypeScript) and a lightweight Node server. This repository contains a client (frontend), a simple server, and shared schema/types used by both. The project appears to be a marketing/site for a college with pages for programs, admissions, contact, and more.
+A modern, responsive college marketing website built with Next.js 15 and React 18. Features an integrated AI chatbot powered by Google Dialogflow for prospective student inquiries.
 
-## Table of contents
+## Table of Contents
 
-- Project overview
-- Tech stack
-- Quick start (development)
-- Build / Production
-- Project structure
-- Important files
-- Contributing / Next steps
-- License
+- [Project Overview](#project-overview)
+- [Tech Stack](#tech-stack)
+- [Quick Start](#quick-start)
+- [Project Structure](#project-structure)
+- [Pages](#pages)
+- [Features](#features)
+- [Configuration](#configuration)
+- [Contributing](#contributing)
+- [License](#license)
 
-## Project overview
+## Project Overview
 
-This project contains a React + TypeScript frontend served by Vite in `client/` and a Node-based server in `server/`. The `shared/` folder contains a schema used by both sides (likely TypeScript types or zod schema). The UI uses Tailwind and a set of small, reusable UI components.
+This project is a complete college recruitment and student engagement platform for "Kenya College." It showcases academic programs, admissions information, campus details, and includes an AI chatbot for answering prospective student questions.
 
-The app provides common marketing site pages:
-- Home
-- Programs
-- Admissions
-- Contact
-- About
+### Key Pages
 
-There are UI components and example components for quick development and a set of design assets in `attached_assets/`.
+- **Home** - Hero section, statistics, featured programs, testimonials
+- **About** - Mission, vision, core values, institutional history
+- **Programs** - 100+ programs across 6 categories with filtering
+- **Admissions** - Application process, requirements, important dates
+- **Contact** - Contact form with validation, contact information
 
-## Tech stack
+## Tech Stack
 
-- Frontend: Vite + React + TypeScript
-- Styling: Tailwind CSS (configured by `tailwind.config.ts` and `postcss.config.js`)
-- Server: Node (TypeScript) — simple server code in `server/`
-- Tooling: Drizzle (drizzle.config.ts present), likely used for DB or ORM related work
+### Core Framework
+- **Next.js 15.1.4** - React framework with App Router
+- **React 18.3.1** - UI library
+- **TypeScript 5.6.3** - Type safety
 
-## Quick start (development)
+### Styling
+- **Tailwind CSS 3.4.17** - Utility-first CSS
+- **tailwindcss-animate** - Animation utilities
+- **@tailwindcss/typography** - Rich text styling
 
-These commands assume you're on Windows using PowerShell (the workspace default).
+### UI Components
+- **shadcn/ui** - 50+ accessible components built on Radix UI
+- **Lucide React** - Icon library
+- **Framer Motion** - Animations
 
-1) Install dependencies
+### Forms & Validation
+- **React Hook Form** - Form state management
+- **Zod** - Schema validation
 
-```powershell
-# from project root
+### State & Data
+- **@tanstack/react-query** - Server state management
+- **next-themes** - Dark/light mode
+
+### External Services
+- **Google Dialogflow** - AI chatbot
+
+## Quick Start
+
+### Prerequisites
+
+- Node.js 18+
+- npm or yarn
+
+### Installation
+
+```bash
+# Clone the repository
+git clone <repository-url>
+cd chatbot-demo
+
+# Install dependencies
 npm install
-```
 
-2) Start the dev server(s)
-
-- To run the frontend (Vite):
-
-```powershell
-npm run dev --workspace client
-# or if there's a root dev script that handles the monorepo, just:
+# Start development server
 npm run dev
 ```
 
-- To run the node server (if available):
+The app will be available at `http://localhost:3000`.
 
-```powershell
-# from project root
-npm run start:server
-# or if the server uses ts-node / nodemon, a script like:
-npm run dev:server
+### Available Scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start development server |
+| `npm run build` | Build for production |
+| `npm run start` | Start production server |
+| `npm run lint` | Run ESLint |
+
+## Project Structure
+
+```
+chatbot-demo/
+├── app/                          # Next.js App Router
+│   ├── layout.tsx               # Root layout (Header, Footer, Providers)
+│   ├── page.tsx                 # Home page
+│   ├── globals.css              # Global styles and CSS variables
+│   ├── providers.tsx            # Context providers
+│   ├── about/page.tsx           # About page
+│   ├── programs/page.tsx        # Programs listing
+│   ├── admissions/page.tsx      # Admissions info
+│   └── contact/page.tsx         # Contact form
+├── components/                   # React components
+│   ├── Header.tsx               # Navigation header
+│   ├── Footer.tsx               # Site footer
+│   ├── Hero.tsx                 # Hero section
+│   ├── ContactForm.tsx          # Contact form with validation
+│   ├── DialogflowChatbot.tsx    # AI chatbot integration
+│   ├── ProgramCard.tsx          # Program display card
+│   ├── Stats.tsx                # Statistics section
+│   ├── TestimonialCard.tsx      # Testimonial card
+│   └── ui/                      # shadcn/ui components (50+)
+├── lib/                          # Utilities
+│   ├── utils.ts                 # Tailwind class utilities
+│   └── queryClient.ts           # React Query config
+├── hooks/                        # Custom hooks
+│   ├── use-toast.ts             # Toast notifications
+│   └── use-mobile.tsx           # Mobile detection
+├── public/                       # Static assets
+│   └── *.png                    # Images (hero, testimonials)
+├── tailwind.config.ts           # Tailwind configuration
+├── next.config.mjs              # Next.js configuration
+├── components.json              # shadcn/ui configuration
+└── design_guidelines.md         # Design system documentation
 ```
 
-Note: Exact npm scripts depend on `package.json` (open it to confirm script names). If scripts are missing, run `node` or `ts-node` on `server/index.ts` as appropriate.
+## Pages
 
-## Build / Production
+### Home (`/`)
+- Full-screen hero with call-to-action buttons
+- Statistics bar (15,000+ students, 100+ programs, 95% success rate, 50+ countries)
+- Featured programs grid
+- Student testimonials
+- Benefits section
 
-To build the frontend for production:
+### About (`/about`)
+- College mission and vision statements
+- Core values (Excellence, Integrity, Community)
+- Historical timeline (1970-2025)
 
-```powershell
-npm run build
+### Programs (`/programs`)
+- Category filter buttons (Technology, Business, Health, Engineering, Arts, Sciences)
+- Program cards with icons, descriptions, and "Learn More" links
+- 100+ programs available
+
+### Admissions (`/admissions`)
+- 4-step application process visualization
+- Requirements checklist
+- Important dates (September and January intakes)
+- Campus visit scheduling
+
+### Contact (`/contact`)
+- Contact form (name, email, phone, program interest, message)
+- Zod validation with error messages
+- Contact information cards
+- Map placeholder
+
+## Features
+
+### AI Chatbot
+Google Dialogflow integration providing 24/7 support for prospective students. The chatbot widget appears in the bottom-right corner on all pages.
+
+### Dark Mode
+Full dark/light theme support with system preference detection. Toggle available in the header.
+
+### Responsive Design
+Mobile-first approach with breakpoints at 640px, 768px, 1024px, 1280px, and 1536px.
+
+### Form Validation
+Contact form uses React Hook Form with Zod schemas for runtime validation and helpful error messages.
+
+### Toast Notifications
+Custom toast system for user feedback on form submissions and actions.
+
+## Configuration
+
+### Tailwind (`tailwind.config.ts`)
+- CSS variable-based theming
+- Custom color palette for light/dark modes
+- Animation utilities
+- Typography plugin
+
+### Next.js (`next.config.mjs`)
+- Standalone output for deployment
+- Configured for static and server-side rendering
+
+### shadcn/ui (`components.json`)
+- "new-york" style preset
+- Neutral base color
+- Path aliases configured
+
+## Environment Variables
+
+Currently, the Dialogflow agent ID is hardcoded. For production, consider:
+
+```env
+NEXT_PUBLIC_DIALOGFLOW_AGENT_ID=your-agent-id
 ```
 
-This typically outputs a `dist/` folder for the frontend. The server can be configured to serve that `dist/` folder in production; check `server/` code for static serving.
+## Deployment
 
-### Deploying to Vercel
+The project is configured with standalone output, suitable for:
 
-Vercel can host the built React app as a static site. The Express server inside `server/` is primarily for local development; in production we only need the contents of `dist/public`.
+- **Vercel** - Import repository, auto-detects Next.js
+- **Docker** - Use standalone output in container
+- **Node.js hosting** - Run `npm run build && npm run start`
 
-1. Run `npm run build` locally at least once to confirm the build succeeds. The command creates `dist/public` (Vite assets) and `dist/index.js` (Node server bundle).
-2. In the Vercel dashboard, import this repository and select **Other** for the Framework preset.
-3. Set the build settings exactly as follows:
-   - **Install Command:** `npm install`
-   - **Build Command:** `npm run build`
-   - **Output Directory:** `dist/public`
-4. (Optional) Add any environment variables your app needs under **Settings → Environment Variables**.
-5. Deploy. Vercel will upload only the static assets from `dist/public`, so visiting your deployment will now serve the compiled React app instead of the Node server bundle that appears if you point Vercel at `dist/`.
+## Contributing
 
-If you ever need to run the Node server (for custom APIs) on Vercel you would have to convert it into a Serverless Function, but for the current site the static deployment above is sufficient.
+### Development Workflow
 
-## Project structure
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Make your changes
+4. Run linting (`npm run lint`)
+5. Commit changes (`git commit -m 'Add amazing feature'`)
+6. Push to branch (`git push origin feature/amazing-feature`)
+7. Open a Pull Request
 
-Top-level files and folders (high-level):
+### Future Enhancements
 
-- `client/` — Frontend app (Vite + React + TS)
-  - `index.html` — Vite entry
-  - `src/` — React source
-    - `App.tsx`, `main.tsx` — app entry points
-    - `components/` — app components and `ui/` primitives
-    - `pages/` — page routes (Home, Programs, Admissions, Contact, About, not-found)
-    - `hooks/`, `lib/` — utilities and hooks
-- `server/` — Node server (TypeScript)
-  - `index.ts` — server entry
-  - `routes.ts`, `storage.ts`, `vite.ts` — server helpers
-- `shared/` — shared schema/types between client and server (`schema.ts`)
-- `attached_assets/` — generated images and assets
-- `components.json`, `design_guidelines.md` — design metadata and guidelines
-- `drizzle.config.ts` — Drizzle configuration (DB/ORM)
-- `tailwind.config.ts`, `postcss.config.js` — styling config
-
-## Important files
-
-- `client/src/main.tsx` — Frontend app bootstrap
-- `client/src/App.tsx` — Top-level React component with routing
-- `client/src/pages/` — All React pages
-- `client/src/components/ui/` — Reusable UI primitives (buttons, inputs, dialogs, etc.)
-- `server/index.ts` — Server startup
-- `shared/schema.ts` — Shared types/schema between client and server
-- `package.json` — Root project scripts and dependencies (confirm exact scripts here)
-
-## Contributing / Next steps
-
-If you plan to contribute or run locally, recommended steps:
-
-- Open `package.json` to confirm scripts and tweak the "dev" scripts for running client and server concurrently (e.g., via `concurrently` or separate terminals).
-- Ensure environment variables (if any) are defined locally. The server may expect a DB or other secrets — check `server/` and `drizzle.config.ts`.
-- Add an `.env.example` file listing required env vars.
-- Add basic unit or integration tests for critical parts (server routes, shared schema validations, and a couple of React component tests).
-
-Edge cases to watch for:
-- Missing or different npm scripts — adjust Quick Start accordingly.
-- If the server expects a DB (Drizzle), a local dev DB may be needed.
-- If TypeScript build is required for server, use `ts-node` or prebuild step.
+- [ ] API routes for contact form email sending
+- [ ] Database integration for storing submissions
+- [ ] Unit and E2E testing
+- [ ] Google Analytics integration
+- [ ] Functional map on contact page
+- [ ] SEO metadata for all pages
 
 ## License
 
-Add a LICENSE file if you intend to open source. If you have an internal/company license, place it at the repo root.
+Add a LICENSE file if you intend to open source this project.
 
 ---
 
-If you'd like, I can:
-- Inspect `package.json` and update this README with exact scripts and commands.
-- Add an `.env.example` and sample `npm` scripts to run client and server concurrently.
-- Create a short `README` section that shows how to run the server and client in separate PowerShell terminals.
-
-Tell me if you want me to (1) insert exact npm commands from `package.json` into this README, or (2) add convenience scripts and an `.env.example`. I can proceed and update the todo list accordingly.
+Built with Next.js 15 and React 18.

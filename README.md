@@ -75,6 +75,21 @@ npm run build
 
 This typically outputs a `dist/` folder for the frontend. The server can be configured to serve that `dist/` folder in production; check `server/` code for static serving.
 
+### Deploying to Vercel
+
+Vercel can host the built React app as a static site. The Express server inside `server/` is primarily for local development; in production we only need the contents of `dist/public`.
+
+1. Run `npm run build` locally at least once to confirm the build succeeds. The command creates `dist/public` (Vite assets) and `dist/index.js` (Node server bundle).
+2. In the Vercel dashboard, import this repository and select **Other** for the Framework preset.
+3. Set the build settings exactly as follows:
+   - **Install Command:** `npm install`
+   - **Build Command:** `npm run build`
+   - **Output Directory:** `dist/public`
+4. (Optional) Add any environment variables your app needs under **Settings → Environment Variables**.
+5. Deploy. Vercel will upload only the static assets from `dist/public`, so visiting your deployment will now serve the compiled React app instead of the Node server bundle that appears if you point Vercel at `dist/`.
+
+If you ever need to run the Node server (for custom APIs) on Vercel you would have to convert it into a Serverless Function, but for the current site the static deployment above is sufficient.
+
 ## Project structure
 
 Top-level files and folders (high-level):

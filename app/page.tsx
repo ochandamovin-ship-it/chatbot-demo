@@ -4,32 +4,25 @@ import ProgramCard from "@/components/ProgramCard";
 import TestimonialCard from "@/components/TestimonialCard";
 import { FlaskConical, Laptop, Building2, Heart, BookOpen, Microscope } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import scienceImage from "@assets/generated_images/Science_laboratory_classroom_scene_cf181a8f.png";
-import libraryImage from "@assets/generated_images/Library_study_environment_4fb96a10.png";
-import businessImage from "@assets/generated_images/Business_technology_classroom_collaboration_8be99353.png";
-import student1 from "@assets/generated_images/Female_student_testimonial_portrait_a944208f.png";
-import student2 from "@assets/generated_images/Male_student_testimonial_portrait_c972c0de.png";
-import student3 from "@assets/generated_images/Graduate_student_testimonial_portrait_15214824.png";
-import student4 from "@assets/generated_images/Energetic_student_testimonial_portrait_6a14af44.png";
 
 const programs = [
   {
     title: "Computer Science",
     description: "Master programming, AI, and software development with cutting-edge technology and expert faculty.",
     icon: Laptop,
-    image: scienceImage,
+    image: "/Science_laboratory_classroom_scene_cf181a8f.png",
   },
   {
     title: "Business Administration",
     description: "Learn leadership, strategy, and entrepreneurship to build your career in the business world.",
     icon: Building2,
-    image: businessImage,
+    image: "/Business_technology_classroom_collaboration_8be99353.png",
   },
   {
     title: "Health Sciences",
     description: "Prepare for a rewarding career in healthcare with our comprehensive medical programs.",
     icon: Heart,
-    image: libraryImage,
+    image: "/Library_study_environment_4fb96a10.png",
   },
   {
     title: "Engineering",
@@ -53,25 +46,25 @@ const testimonials = [
     name: "Sarah Kamau",
     program: "Business Administration, Class of 2023",
     quote: "Kenya College provided me with the skills and confidence to launch my career. The faculty are exceptional and truly care about student success.",
-    image: student1,
+    image: "/Female_student_testimonial_portrait_a944208f.png",
   },
   {
     name: "David Ochieng",
     program: "Computer Science, Class of 2024",
     quote: "The hands-on projects and industry connections I gained here opened doors I never imagined. Best decision I ever made.",
-    image: student2,
+    image: "/Male_student_testimonial_portrait_c972c0de.png",
   },
   {
     name: "Grace Wanjiru",
     program: "Health Sciences, Class of 2022",
     quote: "The practical training and supportive environment prepared me perfectly for my medical career. I'm now working at a top hospital in Nairobi.",
-    image: student3,
+    image: "/Graduate_student_testimonial_portrait_15214824.png",
   },
   {
     name: "James Mutua",
     program: "Engineering, Class of 2023",
     quote: "From theory to practice, Kenya College equipped me with everything I needed. The innovation labs are world-class!",
-    image: student4,
+    image: "/Energetic_student_testimonial_portrait_6a14af44.png",
   },
 ];
 
@@ -80,7 +73,7 @@ export default function Home() {
     <div>
       <Hero />
       <Stats />
-      
+
       <section className="py-16 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -89,13 +82,13 @@ export default function Home() {
               Choose from over 100 programs designed to help you achieve your academic and career goals.
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             {programs.map((program, index) => (
               <ProgramCard key={index} {...program} />
             ))}
           </div>
-          
+
           <div className="text-center">
             <Button size="lg" variant="outline" data-testid="button-view-all-programs">
               View All Programs
@@ -112,7 +105,7 @@ export default function Home() {
               Experience excellence in education with world-class facilities and dedicated support.
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
               <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -123,7 +116,7 @@ export default function Home() {
                 Learn from industry leaders and renowned academics dedicated to your success.
               </p>
             </div>
-            
+
             <div className="text-center">
               <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Microscope className="w-8 h-8 text-primary" />
@@ -133,7 +126,7 @@ export default function Home() {
                 State-of-the-art labs, libraries, and technology to enhance your learning experience.
               </p>
             </div>
-            
+
             <div className="text-center">
               <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Heart className="w-8 h-8 text-primary" />
@@ -155,7 +148,7 @@ export default function Home() {
               Hear from our alumni about their transformative experiences at Kenya College.
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {testimonials.map((testimonial, index) => (
               <TestimonialCard key={index} {...testimonial} />
